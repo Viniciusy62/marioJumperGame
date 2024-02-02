@@ -1,5 +1,6 @@
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
+const clouds = document.querySelector(".clouds");
 
 const jumper = () => {
   mario.classList.add("jump");
@@ -9,22 +10,26 @@ const jumper = () => {
 
 const loop = setInterval(() => {
   const pipePosition = pipe.offsetLeft;
+  const cloudsPosition = clouds.offsetLeft;
   const marioPosition = +window
     .getComputedStyle(mario)
     .bottom.replace("px", "");
 
-  console.log("loop");
-
   if (pipePosition <= 120 && pipePosition >= 0 && marioPosition < 80) {
     pipe.style.animation = "none";
     pipe.style.left = `${pipePosition}px`;
+
     mario.style.animation = "none";
     mario.style.bottom = `${marioPosition}px`;
 
-    // mario.setAttribute("src", "./images/game-over.png");
     mario.src = "./images/game-over.png";
     mario.style.width = "75px";
     mario.style.marginLeft = "50px";
+
+    clouds.style.animation = "none";
+    clouds.style.left = `${cloudsPosition}px`;
+
+    console.log(cloudsPosition);
 
     clearInterval(loop);
   }
