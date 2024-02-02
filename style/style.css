@@ -20,7 +20,7 @@
 }
 
 .jump {
-  animation: jump 1s ease-out;
+  animation: jump 500ms ease-out;
 }
 
 .pipe {
